@@ -1,22 +1,24 @@
 <!-- BEGIN_TF_DOCS -->
-[![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
+[![Tests](https://github.com/netascode/terraform-aci-config-export/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-config-export/actions/workflows/test.yml)
 
-# Terraform ACI Scaffolding Module
+# Terraform ACI Config Export Module
 
-Description
+Manages ACI Config Export
 
 Location in GUI:
-`Tenants` » `XXX`
+`Admin` » `Import/Export` » `Export Policies` » `Configuration`
 
 ## Examples
 
 ```hcl
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_config_export" {
+  source = "netascode/config-export/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  name            = "EXP1"
+  description     = "My Description"
+  format          = "xml"
+  remote_location = "REMOTE1"
+  scheduler       = "SCHEDULER1"
 }
 
 ```
@@ -38,20 +40,24 @@ module "aci_scaffolding" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | Tenant name. | `string` | n/a | yes |
-| <a name="input_alias"></a> [alias](#input\_alias) | Tenant alias. | `string` | `""` | no |
-| <a name="input_description"></a> [description](#input\_description) | Tenant description. | `string` | `""` | no |
+| <a name="input_name"></a> [name](#input\_name) | Config export policy name. | `string` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | Description. | `string` | `""` | no |
+| <a name="input_format"></a> [format](#input\_format) | Format. Choices: `json`, `xml`. | `string` | `"json"` | no |
+| <a name="input_remote_location"></a> [remote\_location](#input\_remote\_location) | Remote location name. | `string` | `""` | no |
+| <a name="input_scheduler"></a> [scheduler](#input\_scheduler) | Scheduler name. | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `fvTenant` object. |
-| <a name="output_name"></a> [name](#output\_name) | Tenant name. |
+| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `configExportP` object. |
+| <a name="output_name"></a> [name](#output\_name) | Config export policy name. |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aci_rest.fvTenant](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.configExportP](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.configRsExportScheduler](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.configRsRemotePath](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
 <!-- END_TF_DOCS -->

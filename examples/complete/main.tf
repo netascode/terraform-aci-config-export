@@ -1,7 +1,9 @@
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_config_export" {
+  source = "netascode/config-export/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  name            = "EXP1"
+  description     = "My Description"
+  format          = "xml"
+  remote_location = "REMOTE1"
+  scheduler       = "SCHEDULER1"
 }
