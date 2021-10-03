@@ -12,7 +12,8 @@ Location in GUI:
 
 ```hcl
 module "aci_config_export" {
-  source = "netascode/config-export/aci"
+  source  = "netascode/config-export/aci"
+  version = ">= 0.0.1"
 
   name            = "EXP1"
   description     = "My Description"
