@@ -9,7 +9,7 @@ resource "aci_rest" "configExportP" {
 }
 
 resource "aci_rest" "configRsRemotePath" {
-  dn         = "${aci_rest.configExportP.id}/rsRemotePath"
+  dn         = "${aci_rest.configExportP.dn}/rsRemotePath"
   class_name = "configRsRemotePath"
   content = {
     tnFileRemotePathName = var.remote_location
@@ -17,7 +17,7 @@ resource "aci_rest" "configRsRemotePath" {
 }
 
 resource "aci_rest" "configRsExportScheduler" {
-  dn         = "${aci_rest.configExportP.id}/rsExportScheduler"
+  dn         = "${aci_rest.configExportP.dn}/rsExportScheduler"
   class_name = "configRsExportScheduler"
   content = {
     tnTrigSchedPName = var.scheduler
