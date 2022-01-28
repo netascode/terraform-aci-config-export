@@ -1,6 +1,6 @@
 module "aci_config_export" {
   source  = "netascode/config-export/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   name            = "EXP1"
   description     = "My Description"

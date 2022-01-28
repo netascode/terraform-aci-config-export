@@ -5,8 +5,8 @@ terraform {
     }
 
     aci = {
-      source  = "netascode/aci"
-      version = ">=0.2.0"
+      source  = "CiscoDevNet/aci"
+      version = ">=2.0.0"
     }
   }
 }
@@ -21,7 +21,7 @@ module "main" {
   scheduler       = "SCHEDULER1"
 }
 
-data "aci_rest" "configExportP" {
+data "aci_rest_managed" "configExportP" {
   dn = "uni/fabric/configexp-${module.main.name}"
 
   depends_on = [module.main]
@@ -32,25 +32,25 @@ resource "test_assertions" "configExportP" {
 
   equal "name" {
     description = "name"
-    got         = data.aci_rest.configExportP.content.name
+    got         = data.aci_rest_managed.configExportP.content.name
     want        = module.main.name
   }
 
   equal "descr" {
     description = "descr"
-    got         = data.aci_rest.configExportP.content.descr
+    got         = data.aci_rest_managed.configExportP.content.descr
     want        = "My Description"
   }
 
   equal "format" {
     description = "format"
-    got         = data.aci_rest.configExportP.content.format
+    got         = data.aci_rest_managed.configExportP.content.format
     want        = "xml"
   }
 }
 
-data "aci_rest" "configRsRemotePath" {
-  dn = "${data.aci_rest.configExportP.id}/rsRemotePath"
+data "aci_rest_managed" "configRsRemotePath" {
+  dn = "${data.aci_rest_managed.configExportP.id}/rsRemotePath"
 
   depends_on = [module.main]
 }
@@ -60,13 +60,13 @@ resource "test_assertions" "configRsRemotePath" {
 
   equal "tnFileRemotePathName" {
     description = "tnFileRemotePathName"
-    got         = data.aci_rest.configRsRemotePath.content.tnFileRemotePathName
+    got         = data.aci_rest_managed.configRsRemotePath.content.tnFileRemotePathName
     want        = "REMOTE1"
   }
 }
 
-data "aci_rest" "configRsExportScheduler" {
-  dn = "${data.aci_rest.configExportP.id}/rsExportScheduler"
+data "aci_rest_managed" "configRsExportScheduler" {
+  dn = "${data.aci_rest_managed.configExportP.id}/rsExportScheduler"
 
   depends_on = [module.main]
 }
@@ -76,7 +76,7 @@ resource "test_assertions" "configRsExportScheduler" {
 
   equal "tnTrigSchedPName" {
     description = "tnTrigSchedPName"
-    got         = data.aci_rest.configRsExportScheduler.content.tnTrigSchedPName
+    got         = data.aci_rest_managed.configRsExportScheduler.content.tnTrigSchedPName
     want        = "SCHEDULER1"
   }
 }

@@ -5,8 +5,8 @@ terraform {
     }
 
     aci = {
-      source  = "netascode/aci"
-      version = ">=0.2.0"
+      source  = "CiscoDevNet/aci"
+      version = ">=2.0.0"
     }
   }
 }
@@ -17,7 +17,7 @@ module "main" {
   name = "EXP1"
 }
 
-data "aci_rest" "configExportP" {
+data "aci_rest_managed" "configExportP" {
   dn = "uni/fabric/configexp-${module.main.name}"
 
   depends_on = [module.main]
@@ -28,7 +28,7 @@ resource "test_assertions" "configExportP" {
 
   equal "name" {
     description = "name"
-    got         = data.aci_rest.configExportP.content.name
+    got         = data.aci_rest_managed.configExportP.content.name
     want        = module.main.name
   }
 }

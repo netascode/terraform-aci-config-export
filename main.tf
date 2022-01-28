@@ -1,4 +1,4 @@
-resource "aci_rest" "configExportP" {
+resource "aci_rest_managed" "configExportP" {
   dn         = "uni/fabric/configexp-${var.name}"
   class_name = "configExportP"
   content = {
@@ -8,16 +8,16 @@ resource "aci_rest" "configExportP" {
   }
 }
 
-resource "aci_rest" "configRsRemotePath" {
-  dn         = "${aci_rest.configExportP.dn}/rsRemotePath"
+resource "aci_rest_managed" "configRsRemotePath" {
+  dn         = "${aci_rest_managed.configExportP.dn}/rsRemotePath"
   class_name = "configRsRemotePath"
   content = {
     tnFileRemotePathName = var.remote_location
   }
 }
 
-resource "aci_rest" "configRsExportScheduler" {
-  dn         = "${aci_rest.configExportP.dn}/rsExportScheduler"
+resource "aci_rest_managed" "configRsExportScheduler" {
+  dn         = "${aci_rest_managed.configExportP.dn}/rsExportScheduler"
   class_name = "configRsExportScheduler"
   content = {
     tnTrigSchedPName = var.scheduler

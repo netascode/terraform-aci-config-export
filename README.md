@@ -13,7 +13,7 @@ Location in GUI:
 ```hcl
 module "aci_config_export" {
   source  = "netascode/config-export/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   name            = "EXP1"
   description     = "My Description"
@@ -21,7 +21,6 @@ module "aci_config_export" {
   remote_location = "REMOTE1"
   scheduler       = "SCHEDULER1"
 }
-
 ```
 
 ## Requirements
@@ -29,13 +28,13 @@ module "aci_config_export" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 0.2.0 |
+| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 0.2.0 |
+| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 2.0.0 |
 
 ## Inputs
 
@@ -58,7 +57,7 @@ module "aci_config_export" {
 
 | Name | Type |
 |------|------|
-| [aci_rest.configExportP](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
-| [aci_rest.configRsExportScheduler](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
-| [aci_rest.configRsRemotePath](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest_managed.configExportP](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
+| [aci_rest_managed.configRsExportScheduler](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
+| [aci_rest_managed.configRsRemotePath](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->

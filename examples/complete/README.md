@@ -14,7 +14,7 @@ Note that this example will create resources. Resources can be destroyed with `t
 ```hcl
 module "aci_config_export" {
   source  = "netascode/config-export/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   name            = "EXP1"
   description     = "My Description"
@@ -22,6 +22,5 @@ module "aci_config_export" {
   remote_location = "REMOTE1"
   scheduler       = "SCHEDULER1"
 }
-
 ```
 <!-- END_TF_DOCS -->
