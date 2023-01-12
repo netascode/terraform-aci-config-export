@@ -19,6 +19,7 @@ module "main" {
   name            = "EXP1"
   description     = "My Description"
   format          = "xml"
+  snapshot        = true
   remote_location = "REMOTE1"
   scheduler       = "SCHEDULER1"
 }
@@ -48,6 +49,12 @@ resource "test_assertions" "configExportP" {
     description = "format"
     got         = data.aci_rest_managed.configExportP.content.format
     want        = "xml"
+  }
+
+  equal "snapshot" {
+    description = "snapshot"
+    got         = data.aci_rest_managed.configExportP.content.snapshot
+    want        = true
   }
 }
 

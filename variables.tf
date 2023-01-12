@@ -52,3 +52,8 @@ variable "scheduler" {
   }
 }
 
+variable "snapshot" {
+  description = "Local configuration snapshot."
+  type        = bool
+  default     = false
+}

@@ -5,6 +5,7 @@ resource "aci_rest_managed" "configExportP" {
     name   = var.name
     descr  = var.description
     format = var.format
+    snapshot = var.snapshot ? "yes" : "no"
   }
 }
 

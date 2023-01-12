@@ -19,6 +19,7 @@ module "aci_config_export" {
   name            = "EXP1"
   description     = "My Description"
   format          = "xml"
+  snapshot        = true
   remote_location = "REMOTE1"
   scheduler       = "SCHEDULER1"
 }
