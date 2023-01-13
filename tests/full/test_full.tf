@@ -54,7 +54,7 @@ resource "test_assertions" "configExportP" {
   equal "snapshot" {
     description = "snapshot"
     got         = data.aci_rest_managed.configExportP.content.snapshot
-    want        = true
+    want        = "yes"
   }
 }
 
