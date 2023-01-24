@@ -1,3 +1,7 @@
+## 0.1.1 (unreleased)
+
+- Add `snapshot` attribute
+
 ## 0.1.0
 
 - Migrate to devnet provider
