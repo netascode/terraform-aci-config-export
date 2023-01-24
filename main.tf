@@ -2,9 +2,10 @@ resource "aci_rest_managed" "configExportP" {
   dn         = "uni/fabric/configexp-${var.name}"
   class_name = "configExportP"
   content = {
-    name   = var.name
-    descr  = var.description
-    format = var.format
+    name     = var.name
+    descr    = var.description
+    format   = var.format
+    snapshot = var.snapshot ? "yes" : "no"
   }
 }
 

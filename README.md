@@ -18,6 +18,7 @@ module "aci_config_export" {
   name            = "EXP1"
   description     = "My Description"
   format          = "xml"
+  snapshot        = true
   remote_location = "REMOTE1"
   scheduler       = "SCHEDULER1"
 }
@@ -43,6 +44,7 @@ module "aci_config_export" {
 | <a name="input_name"></a> [name](#input\_name) | Config export policy name. | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | Description. | `string` | `""` | no |
 | <a name="input_format"></a> [format](#input\_format) | Format. Choices: `json`, `xml`. | `string` | `"json"` | no |
+| <a name="input_snapshot"></a> [snapshot](#input\_snapshot) | Local config snapshot. | `bool` | `false` | no |
 | <a name="input_remote_location"></a> [remote\_location](#input\_remote\_location) | Remote location name. | `string` | `""` | no |
 | <a name="input_scheduler"></a> [scheduler](#input\_scheduler) | Scheduler name. | `string` | `""` | no |
 
